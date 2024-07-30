@@ -38,6 +38,7 @@ input_message = st.text_input("Enter your message:")
 
 if st.button('Predict'):
     if input_message:
+        input_message = (input_message, )
         input_message_processed = preprocess_text(input_message)
         input_vectorized = vectorizer.transform([input_message_processed]).toarray()
 
@@ -45,6 +46,6 @@ if st.button('Predict'):
         if prediction >= 0.5:
             st.write("This is a spam message. Avoid at all cost!")
         else:
-            st.write("This is not a spam messgae, please.")
+            st.write("This is not a spam message, please.")
 
 
