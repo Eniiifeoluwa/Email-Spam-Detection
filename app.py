@@ -32,7 +32,7 @@ st.title('Spam Detection App')
 st.write("This app predicts whether a given message is spam or not.")
 
 
-model = joblib.load('Spam detection.ipynb')
+model = joblib.load('spamdetection.joblib')
 
 input_message = st.text_input("Enter your message:")
 
@@ -40,6 +40,7 @@ if st.button('Predict'):
     if input_message:
         input_message_processed = preprocess_text(input_message)
         input_vectorized = vectorizer.transform([input_message_processed]).toarray()
+        model = joblib.load('spamdetection.joblib')
         prediction = model.predict(input_vectorized)
         if prediction == 1:
             st.write("This is a spam message!")
