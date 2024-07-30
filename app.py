@@ -66,22 +66,4 @@ if st.button('Predict'):
         else:
             st.write("This is not a spam message.")
 
-# Model evaluation metrics
-'''if st.button('Show Evaluation Metrics'):
-    y_pred = model.predict(x_test)
-    accuracy = accuracy_score(y_test, y_pred)
-    report = classification_report(y_test, y_pred, target_names=['Ham', 'Spam'])
-    conf_mtx = confusion_matrix(y_test, y_pred)
-    
-    st.write(f"Accuracy: {accuracy:.2f}")
-    st.text("Classification Report:\n")
-    st.text(report)
-    
-    st.text("Confusion Matrix:\n")
-    fig, ax = plt.subplots()
-    sns.heatmap(conf_mtx, annot=True, cmap=plt.cm.Blues, fmt='d', xticklabels=['Ham', 'Spam'], yticklabels=['Ham', 'Spam'])
-    plt.title("Confusion Matrix")
-    plt.xlabel("Predicted")
-    plt.ylabel("True")
-    st.pyplot(fig)'''
 
