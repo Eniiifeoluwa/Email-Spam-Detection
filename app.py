@@ -15,9 +15,6 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.naive_bayes import MultinomialNB
 import nltk
 
-nltk.download('stopwords')
-
-
 data = pd.read_csv("SPAM text message 20170820 - Data.csv")
 
 # Text preprocessing
