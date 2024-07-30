@@ -30,8 +30,8 @@ def preprocess_text(text):
 #data['Processed_Message'] = data['Message'].apply(preprocess_text)
 
 # Vectorization
-vectorizer = CountVectorizer(ngram_range=(1, 3), max_features=2500, binary=True)
-#`x = vectorizer.fit_transform(data['Processed_Message'][1]).toarray()
+#vectorizer = CountVectorizer(ngram_range=(1, 3), max_features=2500, binary=True)
+#x = vectorizer.fit_transform(data['Processed_Message']).toarray()
 
 # Label Encoding
 label = LabelEncoder()
@@ -44,7 +44,7 @@ y = label.fit_transform(data['Category'])
 #model = MultinomialNB()
 #model.fit(x_train, y_train)
 
-
+vectorizer = joblib.load('countvectorizer.joblib')
 st.title('Spam Detection App')
 st.write("This app predicts whether a given message is spam or not.")
 
@@ -56,7 +56,7 @@ input_message = st.text_input("Enter your message:")
 if st.button('Predict'):
     if input_message:
         input_message_processed = preprocess_text(input_message)
-        input_vectorized = vectorizer.fit_transform([input_message_processed]).toarray()
+        input_vectorized = vectorizer.transform([input_message_processed]).toarray()
         prediction = model.predict(input_vectorized)
         if prediction == 1:
             st.write("This is a spam message!")
