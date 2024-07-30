@@ -43,8 +43,8 @@ if st.button('Predict'):
 
         prediction = model.predict(input_vectorized)
         if prediction >= 0.5:
-            st.write("This is a spam message!")
+            st.write("This is a spam message. Avoid at all cost!")
         else:
-            st.write("This is not a spam message.")
+            st.write("This is not a spam messgae, please.")
 
 
