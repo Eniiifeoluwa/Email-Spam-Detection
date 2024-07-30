@@ -40,7 +40,7 @@ if st.button('Predict'):
     if input_message:
         input_message_processed = preprocess_text(input_message)
         input_vectorized = vectorizer.transform([input_message_processed]).toarray()
-        model = joblib.load('spamdetection.joblib')
+
         prediction = model.predict(input_vectorized)
         if prediction >= 0.5:
             st.write("This is a spam message!")
