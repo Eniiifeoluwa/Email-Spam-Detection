@@ -41,11 +41,11 @@ label = LabelEncoder()
 y = label.fit_transform(data['Category'])
 
 # Splitting data
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+#x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
 # Model training
-model = MultinomialNB()
-model.fit(x_train, y_train)
+#model = MultinomialNB()
+#model.fit(x_train, y_train)
 
 
 st.title('Spam Detection App')
@@ -67,7 +67,7 @@ if st.button('Predict'):
             st.write("This is not a spam message.")
 
 # Model evaluation metrics
-if st.button('Show Evaluation Metrics'):
+'''if st.button('Show Evaluation Metrics'):
     y_pred = model.predict(x_test)
     accuracy = accuracy_score(y_test, y_pred)
     report = classification_report(y_test, y_pred, target_names=['Ham', 'Spam'])
@@ -83,5 +83,5 @@ if st.button('Show Evaluation Metrics'):
     plt.title("Confusion Matrix")
     plt.xlabel("Predicted")
     plt.ylabel("True")
-    st.pyplot(fig)
+    st.pyplot(fig)'''
 
