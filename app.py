@@ -27,11 +27,11 @@ def preprocess_text(text):
     text = ' '.join(text)
     return text
 
-data['Processed_Message'] = data['Message'].apply(preprocess_text)
+#data['Processed_Message'] = data['Message'].apply(preprocess_text)
 
 # Vectorization
 vectorizer = CountVectorizer(ngram_range=(1, 3), max_features=2500, binary=True)
-x = vectorizer.fit_transform(data['Processed_Message']).toarray()
+x = vectorizer.fit_transform(data['Processed_Message'][1]).toarray()
 
 # Label Encoding
 label = LabelEncoder()
