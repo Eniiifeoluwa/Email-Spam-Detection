@@ -17,13 +17,17 @@ import nltk
 
 
 stemmer = PorterStemmer()
+
 def preprocess_text(text):
-    text = re.sub('[^a-zA-Z0-9]', ' ', text)
-    text = text.lower()
-    text = text.split()
-    text = [stemmer.stem(word) for word in text if word not in set(stopwords.words('english'))]
-    text = ' '.join(text)
-    return text
+    prompts = [ ]
+    for i in range(len(text)):
+        text = re.sub('[^a-zA-Z0-9]', ' ', text[i])
+        text = text.lower()
+        text = text.split()
+        text = [stemmer.stem(word) for word in text if word not in set(stopwords.words('english'))]
+        text = ' '.join(text)
+        prompts.append(text)
+        return text
 
 
 
