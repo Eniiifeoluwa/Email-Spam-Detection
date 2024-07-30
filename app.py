@@ -15,9 +15,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.naive_bayes import MultinomialNB
 import nltk
 
-data = pd.read_csv("SPAM text message 20170820 - Data.csv")
 
-# Text preprocessing
 stemmer = PorterStemmer()
 def preprocess_text(text):
     text = re.sub('[^a-zA-Z0-9]', ' ', text)
@@ -27,29 +25,14 @@ def preprocess_text(text):
     text = ' '.join(text)
     return text
 
-#data['Processed_Message'] = data['Message'].apply(preprocess_text)
 
-# Vectorization
-#vectorizer = CountVectorizer(ngram_range=(1, 3), max_features=2500, binary=True)
-#x = vectorizer.fit_transform(data['Processed_Message']).toarray()
-
-# Label Encoding
-label = LabelEncoder()
-y = label.fit_transform(data['Category'])
-
-# Splitting data
-#x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
-
-# Model training
-#model = MultinomialNB()
-#model.fit(x_train, y_train)
 
 vectorizer = joblib.load('countvectorizer.joblib')
 st.title('Spam Detection App')
 st.write("This app predicts whether a given message is spam or not.")
 
 
-model = joblib.load('spamdetection.joblib')
+model = joblib.load('Spam detection.ipynb')
 
 input_message = st.text_input("Enter your message:")
 
